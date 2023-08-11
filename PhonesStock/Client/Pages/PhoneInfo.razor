@@ -1,0 +1,77 @@
+﻿@using PhonesStock.Shared.Models
+
+<h3>@HeaderText</h3>
+<hr />
+<div style="width:60%;">
+
+    <EditForm Model="Phone" OnValidSubmit="OnValidSubmit">
+        <DataAnnotationsValidator />
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">Marca</label>
+            <div class="col-sm-10">
+                <InputText type="text" class="form-control" @bind-Value="@Phone.Brand" disabled="@ReadOnlyMode" />
+                <ValidationMessage For="@(() => Phone.Brand)" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">Modelo</label>
+            <div class="col-sm-10">
+                <InputText type="text" class="form-control" @bind-Value="@Phone.Model" disabled="@ReadOnlyMode" />
+                <ValidationMessage For="@(() => Phone.Model)" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">Color</label>
+            <div class="col-sm-10">
+                <InputText type="text" class="form-control" @bind-Value="@Phone.Color" disabled="@ReadOnlyMode" />
+                <ValidationMessage For="@(() => Phone.Color)" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">Amperage</label>
+            <div class="col-sm-10">
+                <InputText type="text" class="form-control" @bind-Value="@Phone.Amperage" disabled="@ReadOnlyMode" />
+                <ValidationMessage For="@(() => Phone.Amperage)" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">Almacenamiento</label>
+            <div class="col-sm-10">
+                <InputText type="text" class="form-control" @bind-Value="@Phone.Storage" disabled="@ReadOnlyMode" />
+                <ValidationMessage For="@(() => Phone.Storage)" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">RAM</label>
+            <div class="col-sm-10">
+                <InputText type="text" class="form-control" @bind-Value="@Phone.RAM" disabled="@ReadOnlyMode" />
+                <ValidationMessage For="@(() => Phone.RAM)" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">Procesador</label>
+            <div class="col-sm-10">
+                <InputText type="text" class="form-control" @bind-Value="@Phone.Processor" disabled="@ReadOnlyMode" />
+                <ValidationMessage For="@(() => Phone.Processor)" />
+            </div>
+        </div>
+        <a class="btn btn-danger" tabindex="-1" role="button" aria-disabled="true" href="/">Regresar</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        @if (!ReadOnlyMode)
+        {
+            <button type="submit" class="btn btn-primary">@((PhoneId > 0) ? "Actualizar" : "Guardar")</button>
+        }
+    </EditForm>
+</div>
+
+@code {
+    [Parameter] public int PhoneId { get; set; }
+    [Parameter] public string HeaderText { get; set; }
+    [Parameter] public Phone Phone { get; set; }
+    [Parameter] public bool ReadOnlyMode { get; set; }
+
+    [Parameter] public EventCallback OnValidSubmit { get; set; }
+
+    // Your initialization code here, if needed.
+}

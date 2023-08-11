@@ -1,0 +1,13 @@
+﻿@page "/phone/view/{phoneId:int}"
+@using PhonesStock.Shared.Models
+@inject HttpClient Http
+
+<PhoneInfo PhoneId="phoneId" HeaderText="Phone View" Phone="phone" ReadOnlyMode=true></PhoneInfo>
+
+@code {
+    [Parameter] public int phoneId { get; set; }
+
+    private Phone phone = new Phone();
+
+    protected override async Task OnInitializedAsync() => phone = await Http.GetFromJsonAsync<Phone>($"/api/phone/getphone/{phoneId}");
+}

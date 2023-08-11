@@ -1,0 +1,44 @@
+﻿@page "/phone/create"
+@page "/phone/edit/{phoneId:int}"
+@using PhonesStock.Shared.Models
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+@if (phoneId > 0)
+{
+    <PhoneInfo PhoneId="phoneId" HeaderText="Actualizar Telefono" Phone="phone" OnValidSubmit="UpdatePhone"></PhoneInfo>
+}
+else
+{
+    <PhoneInfo PhoneId="0" HeaderText="Agregar telefono" Phone="phone" OnValidSubmit="CreatePhone"></PhoneInfo>
+}
+
+@code {
+    private Phone phone = new Phone();
+
+    [Parameter] public int phoneId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (phoneId > 0)
+            phone = await Http.GetFromJsonAsync<Phone>($"/api/phone/getphone/{phoneId}");
+    }
+
+    private async Task CreatePhone()
+    {
+        var result = await Http.PostAsJsonAsync("/api/phone/savephone", phone);
+        if (result != null && result.StatusCode == System.Net.HttpStatusCode.OK)
+        {
+            NavigationManager.NavigateTo("/");
+        }
+    }
+
+    private async Task UpdatePhone()
+    {
+        var result = await Http.PostAsJsonAsync("/api/phone/updatephone", phone);
+        if (result != null && result.StatusCode == System.Net.HttpStatusCode.OK)
+        {
+            NavigationManager.NavigateTo("/");
+        }
+    }
+}
