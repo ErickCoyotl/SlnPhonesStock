@@ -9,15 +9,15 @@
     <table class="table table-striped table-primary">
         <thead>
             <tr>
-                <th class="table-dark">Id</th>
-                <th class="table-dark">Marca</th>
-                <th class="table-dark">Moodelo</th>
-                <th class="table-dark">Color</th>
-                <th class="table-dark">Aperage</th>
-                <th class="table-dark">Almacenamiento</th>
-                <th class="table-dark">RAM</th>
-                <th class="table-dark">Procesador</th>
-                <th class="table-dark">Acciones</th>
+                <th class="table-warning">Id</th>
+                <th class="table-warning">Marca</th>
+                <th class="table-warning">Moodelo</th>
+                <th class="table-warning">Color</th>
+                <th class="table-warning">Aperage</th>
+                <th class="table-warning">Almacenamiento</th>
+                <th class="table-warning">RAM</th>
+                <th class="table-warning">Procesador</th>
+                <th class="table-warning">Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -32,15 +32,15 @@
                 @foreach (var phone in phones)
                 {
                     <tr>
-                        <td class="table-dark">@phone.Id</td>
-                        <td class="table-dark">@phone.Brand</td>
-                        <td class="table-dark">@phone.Model</td>
-                        <td class="table-dark">@phone.Color</td>
-                        <td class="table-dark">@phone.Amperage</td>
-                        <td class="table-dark">@phone.Storage</td>
-                        <td class="table-dark">@phone.RAM</td>
-                        <td class="table-dark">@phone.Processor</td>
-                        <td class="table-dark">
+                        <td class="table-blue">@phone.Id</td>
+                        <td class="table-blue">@phone.Brand</td>
+                        <td class="table-blue">@phone.Model</td>
+                        <td class="table-blue">@phone.Color</td>
+                        <td class="table-blue">@phone.Amperage</td>
+                        <td class="table-blue">@phone.Storage</td>
+                        <td class="table-blue">@phone.RAM</td>
+                        <td class="table-blue">@phone.Processor</td>
+                        <td class="table-blue">
                             <a href="@GetEditPhoneViewUrl(@phone)" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">Editar</a>
                             <a class="btn btn-danger" tabindex="-1" role="button" aria-disabled="true" @onclick="_ => DeletePhone(phone)">Eliminar</a>
                         </td>
