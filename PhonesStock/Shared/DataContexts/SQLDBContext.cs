@@ -23,7 +23,7 @@ namespace PhonesStock.Shared.DataContexts
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=RAUL\\SQLEXPRESS;Initial Catalog=Phones;Integrated Security=True;TrustServerCertificate=True");
+                optionsBuilder.UseSqlServer("Data Source=bonsectanew.database.windows.net;Initial Catalog=Phones;User ID=lemustiano;Password=LemusH69#;Connect Timeout=60;Encrypt=True;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
             }
             base.OnConfiguring(optionsBuilder);
         }
